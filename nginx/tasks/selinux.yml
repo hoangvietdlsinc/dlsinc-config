@@ -1,0 +1,10 @@
+---
+- name: Change SELinux to permissive mode
+  replace:
+        path: "/etc/selinux/config"
+        regexp: "SELINUX=enforcing"
+        replace: "SELINUX=permissive"
+
+- name: Reboot
+  reboot:
+      reboot_timeout: 120

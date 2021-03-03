@@ -1,7 +1,6 @@
 ---
 # vars file for php
-php_version: 
-        - 7.3
+php_version: 7.3
 
 php_modules:
         - php
@@ -9,7 +8,7 @@ php_modules:
         - php-common
         - php-mbstring
         - php-opcache
-        - php-memcached
+        - php-memcache
         - php-gd
         - php-mysqlnd
         - php-devel
@@ -18,7 +17,6 @@ php_modules:
         - php-xmlrpc
         - php-intl
         - php-apcu
-        - php-pecl
-        - php-ssh2
         
 web_user: nginx 
+remi_release: https://rpms.remirepo.net/enterprise/remi-release-8.rpm

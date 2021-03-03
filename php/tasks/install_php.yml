@@ -1,26 +1,26 @@
 ---
-- name: copy REMI repository to /tmp
-  copy:
-      src: "./files/remi-release-8.rpm"
-      dest: "/tmp/remi-release-8.rpm"
-      owner: root
-      group: root
-      mode: "0644"
-- name: install REMI repository
+- name: install yum-utils
   yum:
-      name: /tmp/remi-release-8.rpm
+      name: dnf-utils
       state: present
+- name: add repository PowerTools
+  command: dnf config-manager --set-enabled powertools
+
+- rpm_key:
+      state: present
+      key: https://rpms.remirepo.net/RPM-GPG-KEY-remi2018
+- name: Install remi repo.
+  yum:
+      name: http://rpms.remirepo.net/enterprise/remi-release-8.rpm
+      state: present
+
 - name: enable remi repository
-  command: dnf module enable php:remi-{{ item }} -y
-  with_items:
-  - "{{ php_version }}"
+  shell: dnf module enable php:remi-{{ php_version }} -y
 
 - name: makecache
   command: dnf makecache
 
 - name: install php
   yum: 
-      name: "{{ item }}"
+      name: "{{ php_modules }}"
       state: present
-  with_items:
-  - "{{ php_modules }}"

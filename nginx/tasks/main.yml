@@ -1,5 +1,6 @@
 ---
 # tasks file for nginx
+- include_tasks: selinux.yml
 - include_tasks: install_nginx.yml
 - include_tasks: config_directory.yml
 - include_tasks: config_template.yml
