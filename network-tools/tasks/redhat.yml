@@ -1,13 +1,13 @@
 ---
 - name: redhat | Enabling EPEL Repo
-  yum:
+  dnf:
     name: "epel-release"
     state: "present"
   become: true
-  when: ansible_distribution != "Fedora"
+  when: ansible_facts['os_family'] == 'RedHat' and ansible_facts['distribution_major_version'] == '8'
 
 - name: redhat | Installing Packages
-  yum:
+  dnf:
     name: "{{ item }}"
     state: "present"
   become: true
