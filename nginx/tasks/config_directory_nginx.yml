@@ -52,4 +52,28 @@
   with_items:
    - {{ domain_name }}
 
+- name: create static_pages directory for domains
+  file:
+    path: "/data/{ item }}/static_pages"
+    owner: nginx 
+    group: nginx 
+    mode: "0755"
+    state: directory
+    force: yes 
+  with_items:
+  - {{ domain_name }}
+
+- name: create static_pages directory for domains
+  file:
+    path: "/data/{ item }}/vhost"
+    owner: root
+    group: root 
+    mode: "0755"
+    state: directory
+    force: yes 
+  with_items:
+  - {{ domain_name }}
+
+    
+
 

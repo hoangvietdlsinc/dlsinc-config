@@ -1,8 +1,8 @@
 server {
-    server_name dell-utils.9prints.com;
-    root   /data/www/9prints/utils;
+    server_name 9prints.com;
+    root   /data/{{ item }}/public_html;
     index  index.html index.htm index.php;
-    
+
     client_max_body_size 275M;
 
     location ~* \.(js|css|asf|asx|wax|wmv|wmx|avi|bmp|class|divx|doc|docx|eot|exe|gif|gz|gzip|ico|jpg|jpeg|jpe|mdb|mid|midi|mov|qt|mp3|m4a|mp4|m4v|mpeg|mpg|mpe|mpp|odb|odc|odf|odg|odp|ods|odt|ogg|ogv|otf|pdf|png|pot|pps|ppt|pptx|ra|ram|svg|svgz|swf|tar|t?gz|tif|tiff|ttf|wav|webm|wma|woff|wri|xla|xls|xlsx|xlt|xlw|zip)$ {
@@ -37,8 +37,8 @@ server {
         }
     }
 
-    error_page 403 404 /resource/static_page/404.html;
-    error_page 500 502 503 504  /resource/static_page/50x.html;
+    error_page 403 404 /data/{{ item }}/static_pages/404.html;
+    error_page 500 502 503 504  /data/{{ item }}/static_pages/50x.html;
 
     location ~ \.php$ {
         try_files $uri =404;
@@ -50,19 +50,20 @@ server {
     }
 
     listen 443 ssl; # managed by Certbot
-    ssl_certificate /etc/letsencrypt/live/dell-utils.9prints.com/fullchain.pem; # managed by Certbot
-    ssl_certificate_key /etc/letsencrypt/live/dell-utils.9prints.com/privkey.pem; # managed by Certbot
-    include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
-    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
+    ssl_certificate /data/{{ item }}/ssl/fullchain.pem; # managed by Certbot
+    ssl_certificate_key /data/{{ item }}/ssl/privkey.pem; # managed by Certbot
+    ssl_dhparam /data/{{ item }}/sslssl-dhparams.pem; # managed by Certbot
+    include /data/{{ item }}/vhost/options-ssl-nginx.conf; # managed by Certbot
+    
 
 }
 server {
-    if ($host = dell-utils.9prints.com) {
+    if ($host = {{ item }} ) {
         return 301 https://$host$request_uri;
     } # managed by Certbot
 
 
-    server_name dell-utils.9prints.com;
+    server_name {{ item }};
     listen 80;
     return 404; # managed by Certbot
 
