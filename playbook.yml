@@ -7,4 +7,5 @@
       - nginx
       - php
       - mariadb
+      - network-tools
   ignore_errors: yes

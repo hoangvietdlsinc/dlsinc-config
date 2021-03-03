@@ -8,13 +8,25 @@
 
 - name: redhat | Installing Packages
   dnf:
-    name: "{{ item }}"
+    name: "{{ network_tools_redhat }}"
     state: present
   become: true
-  with_items: '{{ network_tools_redhat }}'
   when: ansible_distribution != "Fedora"
 
-  
+- name: enable CERT Forensic repository
+  dnf:
+      name: https://forensics.cert.org/cert-forensics-tools-release-el8.rpm
+      state: present
+- name: install CERT Forensic repository
+  dnf:
+      name: cert-forensics-tools-release
+      state: present
+      enablerepo: forensics
+- name: install tcpflow
+  dnf:
+      name: tcpflow
+      state: present
+      disable_gpg_check: yes 
 - name: copy iperf startup script
   copy:
       src: "./handlers/start_iperf.sh"

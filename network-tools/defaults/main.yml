@@ -8,7 +8,7 @@ network_tools_debian:
   - dnsutils
   - ifstat
   - iftop
-  - iperf
+  - iperf3
   - iproute
   - lldpd
   - lsof
@@ -25,7 +25,6 @@ network_tools_debian:
   - nmap
   - socat
   - tcpdump
-  - tcpflow
   - tcpstat
   - tcptrace
   - tcptrack
