@@ -3,3 +3,4 @@
 - import_tasks: install_mariadb.yml
 - import_tasks: config_mariadb.yml
 - import_tasks: open_port.yml
+- import_tasks: create_database.yml

@@ -3,3 +3,4 @@
   dnf:
       name: redis
       state: present
+      update_cache: yes

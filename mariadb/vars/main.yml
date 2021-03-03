@@ -2,20 +2,58 @@
 # vars file for mariadb
 
 # root db password
+mysql_databases:
+        personalizeddesign:
+                  name: personalizeddesign
+                  user: 9prints_admin
+                  password: test123
+                  userhost:
+                          - localhost
+                          - '%'
+        fullfill:
+                  name: fullfill
+                  user: admin_dls_service 
+                  password: test123
+                  userhost:
+                          - localhost
+                          - '%'
+        dell_utils:
+                  name: dell_utils
+                  user: dell_utils
+                  password: test123
+                  userhost:
+                          - localhost
+                          - '%'
+        dls_website:
+                  name: dls_website
+                  user: dls_website
+                  password: test123
+                  userhost:
+                          - localhost
+                          - '%'
+                         
+mysql_port: 3306
+collation: utf8_general_ci
+encode: utf8                
+mysql_host: localhost
+mysql_root_user: root
 mysql_root_password: qRRMavnNUB9Eqxujbb9C
+
+local: localhost
+remote: '%'
 
 # personalizedDesign service account
 personalizeddesign_user: 9prints_admin
-personalizeddesign_password: KxBBAd2wPRHELf8lx25u
+personalizeddesign_password: test123
 
 # fulfill service account 
 fulfill_user: admin_dls_service
-fulfill_password: MvkbaM65W3jeCXynweWQ
+fulfill_password: test123
 
 # dell utils service account
 dell_utils_user: dls_utils
-dell_utils_password: 57fd*%DSA8asfdaf
+dell_utils_password: test123
 
 # dls website account
 dls_website_user: dls_website
-dls_website_password: "*&^FDDDfgdsdsdf^546"
+dls_website_password: test123
