@@ -1,0 +1,35 @@
+---
+- name: copy epel-release repo 
+  copy:
+      src: "./files/epel-release-latest-8.noarch.rpm"
+      dest: "/tmp/epel-release-latest-8.noarch.rpm"
+      owner: root
+      owner: root
+      mode: "0644"
+
+- name: install epel-release
+  yum: 
+      name: /tmp/epel-release-latest-8.noarch.rpm
+      state: present
+
+- name: add repository PowerTools
+  command: dnf config-manager --set-enabled PowerTools
+
+- name: install ImagicK
+  yum:
+      name: ImageMagick ImageMagick-devel
+      state: present
+
+- name: pecl install imagick
+  command: pecl install imagick
+
+- name: config imagick
+  command: echo "extension=imagick.so" > /etc/php.d/20-imagick.ini
+  notify:
+  - restart nginx
+  - restart php-fpm
+
+
+
+
+
