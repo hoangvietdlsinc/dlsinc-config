@@ -73,6 +73,16 @@
     force: yes 
   with_items:
   - {{ domain_name }}
+- name: copy ssl option config to nginx
+  copy:
+    src: "./files/options-ssl-nginx.conf"
+    dest: "/data/{{ item }}/vhost/options-ssl-nginx.conf"
+    owner: root
+    group: root
+    mode: "0755"
+    force: yes 
+  with_items:
+  - {{ domain_name }}
 
     
 
