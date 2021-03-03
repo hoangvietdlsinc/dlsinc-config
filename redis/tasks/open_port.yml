@@ -1,0 +1,24 @@
+- name: Make sure install firewalld
+  yum:
+      name: firewalld
+      state: latest
+- name: Start and Enable Firewalld
+  service:
+        name: firewalld
+        state: started
+        enabled: yes 
+- name: open port redis
+  firewalld:
+        zone: redis
+        port: 6379/tcp
+        permanent: yes
+        state: enabled
+#- name: limit ip access port
+#    firewalld:
+#    source: 192.0.2.0/24
+#    zone: redis
+#    state: enabled
+- name: restart firewalld
+  service:
+        name: firewalld
+        state: restarted

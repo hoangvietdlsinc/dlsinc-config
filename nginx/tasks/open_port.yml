@@ -8,10 +8,16 @@
         name: firewalld
         state: started
         enabled: yes 
-- name: Config Firewalld
+- name: allow traffic http
   firewalld:
       zone: public
       service: http
+      permanent: yes 
+      state: enabled
+- name: allow traffic https
+  firewalld:
+      zone: public
+      service: https
       permanent: yes 
       state: enabled
 - name: restart firewalld

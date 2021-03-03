@@ -10,10 +10,15 @@
         enabled: yes
 - name: Open Port 
   firewalld:
-        zone: public
+        zone: database
         service: mysql
         permanent: yes 
         state: enabled
+#- name: limit ip access port
+#    firewalld:
+#    source: 192.0.2.0/24
+#    zone: database
+#    state: enabled
 - name: Restart Firewalld
   service:
         name: firewalld

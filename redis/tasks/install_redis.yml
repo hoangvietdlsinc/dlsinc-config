@@ -1,0 +1,5 @@
+---
+- name: install redis
+  dnf:
+      name: redis
+      state: present

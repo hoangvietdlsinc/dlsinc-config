@@ -23,5 +23,32 @@
       owner: root
       group: root
       mode: "0755"
+- name: daemon reload
+  shell: systemctl daemon-reload  
   notify: 
-  - start iperf
+  - start iperf3
+  - enable iperf3
+- name: Make sure install firewalld
+  yum:
+      name: firewalld
+      state: latest
+- name: Start and Enable Firewalld
+  service:
+        name: firewalld
+        state: started
+        enabled: yes 
+- name: open port iperf
+  firewalld:
+        zone: iperf
+        port: 5201/tcp
+        permanent: yes
+        enabled: yes
+#- name: limit ip access port
+#    firewalld:
+#    source: 192.0.2.0/24
+#    zone: iperf
+#    state: enabled
+- name: restart firewalld
+  service:
+        name: firewalld
+        state: restarted
