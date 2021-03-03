@@ -6,7 +6,13 @@
     owner: root
     group: root
     mode: 0644
+- name: makecache repository
+  command: dnf makecache
 
+- name: make sure yum-utils install
+  yum:
+      name: yum-utils
+      state: present
 - name: config mainline nginx repository
   command: yum-config-manager --enable nginx-mainline
 

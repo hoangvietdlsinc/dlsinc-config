@@ -1,15 +1,13 @@
 ---
 - name: copy template nginx.conf
-  template:
-    src: nginx.conf.j2
+  copy:
+    src: "./files/nginx.conf"
     dest: /etc/nginx/nginx.conf
     owner: root
     group: root
     mode: '0644'
     force: yes
     backup: yes
-  with_items:
-  - {{ domain_name }}
 - name: create vhost file
   template:
     src: domain.com.conf.j2
@@ -19,7 +17,7 @@
     mode: '0644'
     backup: yes
   with_items:
-  - {{ domain_name }}
+  - "{{ domain_name }}"
 
 
 
