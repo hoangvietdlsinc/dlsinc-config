@@ -1,0 +1,26 @@
+---
+- name: copy REMI repository to /tmp
+  copy:
+      src: "./files/remi-release-8.rpm"
+      dest: "/tmp/remi-release-8.rpm"
+      owner: root
+      group: root
+      mode: "0644"
+- name: install REMI repository
+  yum:
+      name: /tmp/remi-release-8.rpm
+      state: present
+- name: enable remi repository
+  command: dnf module enable php:remi-{{ item }} -y
+  with_items:
+  - "{{ php_version }}"
+
+- name: makecache
+  command: dnf makecache
+
+- name: install php
+  yum: 
+      name: "{{ item }}"
+      state: present
+  with_items:
+  - "{{ php_modules }}"

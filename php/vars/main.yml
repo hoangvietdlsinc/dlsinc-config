@@ -1,2 +1,18 @@
 ---
 # vars file for php
+php_version: 
+        - 7.1
+        - 7.2
+        - 7.3
+        - 7.4
+        
+php_modules:
+        - php
+        - php-fpm
+        - php-common
+        - php-mbstring
+        - php-pdo
+        - php-opcache
+        - php-memcached
+        - php-gd
+        - php-mysqlnd
