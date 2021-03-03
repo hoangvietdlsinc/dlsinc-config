@@ -2,3 +2,4 @@
 # tasks file for php
 - include_tasks: install_php.yml
 - include_tasks: config_php.yml
+- include_tasks: install_imagick.yml

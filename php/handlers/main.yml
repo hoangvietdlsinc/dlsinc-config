@@ -1,2 +1,18 @@
 ---
 # handlers file for php
+- name: start php-fpm
+  service:
+      name: php-fpm
+      state: started
+- name: restart php-fpm
+  service:
+      name: php-fpm
+      state: restarted
+- name: enable php-fpm
+  service:
+      name: php-fpm
+      enabled: true
+- name: restart nginx
+  service:
+      name: nginx
+      state: restarted
