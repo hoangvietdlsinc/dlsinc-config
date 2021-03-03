@@ -1,5 +1,5 @@
 ---
 # tasks file for mariadb
-- include_task: install_mariadb.yml
-- include_task: config_mariadb.yml
-- include_task: open_port.yml
+- include_tasks: install_mariadb.yml
+- include_tasks: config_mariadb.yml
+- include_tasks: open_port.yml

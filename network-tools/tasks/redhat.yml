@@ -2,22 +2,23 @@
 - name: redhat | Enabling EPEL Repo
   dnf:
     name: "epel-release"
-    state: "present"
+    state: present
   become: true
   when: ansible_facts['os_family'] == 'RedHat' and ansible_facts['distribution_major_version'] == '8'
 
 - name: redhat | Installing Packages
   dnf:
     name: "{{ item }}"
-    state: "present"
+    state: present
   become: true
   with_items: '{{ network_tools_redhat }}'
   when: ansible_distribution != "Fedora"
 
-  notify:
-    name: copy iperf startup script
-    copy:
+  
+- name: copy iperf startup script
+  copy:
       src: "./handlers/start_iperf.sh"
       dest: /var/tmp/start_iperf.sh
       mode: a+x
-    name: start iperf
+  notify: 
+  - start iperf
