@@ -13,3 +13,6 @@
   become: true
   with_items: '{{ network_tools_redhat }}'
   when: ansible_distribution != "Fedora"
+
+  notify:
+    name:  start iperf
