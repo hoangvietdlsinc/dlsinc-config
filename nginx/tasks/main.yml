@@ -1,7 +1,7 @@
 ---
 # tasks file for nginx
-- include_tasks: selinux.yml
-- include_tasks: install_nginx.yml
-- include_tasks: config_directory.yml
-- include_tasks: config_template.yml
-- include_tasks: open_port.yml
+- import_tasks: selinux.yml
+- import_tasks: install_nginx.yml
+- import_tasks: config_directory.yml
+- import_tasks: config_template.yml
+- import_tasks: open_port.yml

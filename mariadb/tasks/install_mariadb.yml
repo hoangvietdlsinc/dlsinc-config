@@ -1,6 +1,6 @@
 - name: Copy Repo File To Remote Server
   copy:
-     src: ./mariadb/files/MariaDB.repo
+     src: ./files/MariaDB.repo
      dest: /etc/yum.repos.d/
      owner: root
      group: root
@@ -11,10 +11,13 @@
 - name: Install MariaDB
   yum:
      name: MariaDB-server,MariaDB-client
-     disablerepo: AppStream
+     disablerepo: appstream
      state: latest
-- name: Start Service MariaDB Server
+  notify:
+  - start mariadb
+  - enable mariadb
+- name: start mariadb
   service:
-        name: mariadb
-        state: started
-        enabled: yes
+      name: mariadb
+      state: started
+   

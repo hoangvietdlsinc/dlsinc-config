@@ -1,17 +1,7 @@
 ---
-- name: copy epel-release repo 
-  copy:
-      src: "./files/epel-release-latest-8.noarch.rpm"
-      dest: "/tmp/epel-release-latest-8.noarch.rpm"
-      owner: root
-      owner: root
-      mode: "0644"
-- rpm_key:
-      state: present
-      key: https://dl.fedoraproject.org/pub/epel/RPM-GPG-KEY-EPEL-8
 - name: install epel-release
-  yum: 
-      name: /tmp/epel-release-latest-8.noarch.rpm
+  yum:
+      name: epel-release
       state: present
 
 - name: install ImagicK
