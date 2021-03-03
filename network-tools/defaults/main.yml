@@ -37,7 +37,7 @@ network_tools_redhat:
   - bind-utils
   - bmon
   - iftop
-  - iperf
+  - iperf3
   - iproute
   - iptraf
   - iputils
@@ -52,6 +52,5 @@ network_tools_redhat:
   - nmap-ncat
   - socat
   - tcpdump
-  - tcpflow
   - telnet
   - traceroute

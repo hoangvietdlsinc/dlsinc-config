@@ -8,11 +8,14 @@
   yum:  
      name: boost-program-options
      state: latest
+
+
 - name: Install MariaDB
   yum:
      name: MariaDB-server,MariaDB-client
+     update_cache: yes
      disablerepo: appstream
-     state: latest
+     state: present
   notify:
   - start mariadb
   - enable mariadb

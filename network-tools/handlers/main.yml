@@ -1,4 +1,10 @@
 ---
 # handlers file for ansible-network-tools
-- name: start iperf
-  shell: /var/tmp/start_iperf.sh
+- name: start iperf3
+  service:
+      name: iperf3
+      state: started
+- name: enable iperf3
+  service:
+      name: iperf3
+      enabled: yes

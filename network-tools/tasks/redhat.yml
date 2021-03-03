@@ -13,24 +13,15 @@
   become: true
   when: ansible_distribution != "Fedora"
 
-- name: enable CERT Forensic repository
-  dnf:
-      name: https://forensics.cert.org/cert-forensics-tools-release-el8.rpm
-      state: present
-- name: install CERT Forensic repository
-  dnf:
-      name: cert-forensics-tools-release
-      state: present
-      enablerepo: forensics
-- name: install tcpflow
-  dnf:
-      name: tcpflow
-      state: present
-      disable_gpg_check: yes 
+- name: enable CERT Forensic
+  shell: sudo yum makecache ;sudo yum install https://forensics.cert.org/cert-forensics-tools-release-el8.rpm -y ; sudo yum install cert-forensics-tools-release --no-gpg-check --enablerepo=forensics -y ; sudo yum install tcpflow -y
+
 - name: copy iperf startup script
   copy:
-      src: "./handlers/start_iperf.sh"
-      dest: /var/tmp/start_iperf.sh
-      mode: a+x
+      src: "./files/iperf3.service"
+      dest: /etc/systemd/system/iperf3.service
+      owner: root
+      group: root
+      mode: "0755"
   notify: 
   - start iperf
