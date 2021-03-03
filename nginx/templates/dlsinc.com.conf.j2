@@ -1,0 +1,71 @@
+server {
+    server_name dlsinc.com;
+    root   /data/www/dls_website;
+    index  index.html index.htm index.php;
+
+    client_max_body_size 275M;
+
+    location ~* \.(js|css|asf|asx|wax|wmv|wmx|avi|bmp|class|divx|doc|docx|eot|exe|gif|gz|gzip|ico|jpg|jpeg|jpe|mdb|mid|midi|mov|qt|mp3|m4a|mp4|m4v|mpeg|mpg|mpe|mpp|odb|odc|odf|odg|odp|ods|odt|ogg|ogv|otf|pdf|png|pot|pps|ppt|pptx|ra|ram|svg|svgz|swf|tar|t?gz|tif|tiff|ttf|wav|webm|wma|woff|wri|xla|xls|xlsx|xlt|xlw|zip)$ {
+        access_log off;
+        log_not_found off;
+        gzip on;
+        gzip_static on;
+        gzip_comp_level 5;
+        set $filename $request_filename;
+
+        if (-e $request_filename) {
+            expires 1M;
+            add_header Cache-Control private;
+        }
+
+        if ($request_filename ~* ^.*?/([^/]*?)$) {
+            set $filename $1;
+        }
+
+        if ($filename ~* ^.*?\.(eot|ttf|woff)$){
+            add_header Access-Control-Allow-Origin *;
+        }
+    }
+	
+    location ~ /\. {
+        deny all;
+    } 
+
+    location / {
+        if (!-e $request_filename) {
+            rewrite ^((?!(\/?var\/|\/?resource\/)).*)$ /index.php;
+        }
+    }
+
+    error_page 403 404 /resource/static_page/404.html;
+    error_page 500 502 503 504  /resource/static_page/50x.html;
+
+    location ~ \.php$ {
+        try_files $uri =404;
+        #fastcgi_pass unix:/var/run/php-fpm/php-fpm.sock;
+        fastcgi_pass 127.0.0.1:9000;
+	    fastcgi_hide_header X-Powered-By;
+        fastcgi_index index.php;
+        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+        include fastcgi_params;
+    }
+
+    listen 443 ssl; # managed by Certbot
+    ssl_certificate /etc/letsencrypt/live/dlsinc.com/fullchain.pem; # managed by Certbot
+    ssl_certificate_key /etc/letsencrypt/live/dlsinc.com/privkey.pem; # managed by Certbot
+    include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
+    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
+
+}
+server {
+    if ($host = dlsinc.com) {
+        return 301 https://$host$request_uri;
+    } # managed by Certbot
+
+
+    server_name dlsinc.com;
+    listen 80;
+    return 404; # managed by Certbot
+
+
+}

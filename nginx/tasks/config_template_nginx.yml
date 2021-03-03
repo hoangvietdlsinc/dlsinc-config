@@ -1,0 +1,47 @@
+---
+- name: copy template nginx.conf
+  template:
+    src: nginx.conf.j2
+    dest: /etc/nginx/nginx.conf
+    owner: root
+    group: root
+    mode: '0644'
+    force: yes
+    backup: yes
+- name: copy template config for vhost dlsinc.com
+  template:
+    src: dlsinc.com.conf.j2
+    dest: /etc/nginx/conf.d/dlsinc.com.conf
+    owner: root
+    group: root
+    mode: '0644'
+    backup: yes
+
+- name: copy template config for vhost 9prints.com
+  template:
+    src: 9prints.com.conf.j2
+    dest: /etc/nginx/conf.d/9prints.com.conf
+    owner: root
+    group: root
+    mode: '0644'
+    backup: yes
+
+- name: copy template config for vhost personalizeddesign.9prints.com
+  template:
+    src: personalizeddesign.9prints.com.conf.j2
+    dest: /etc/nginx/conf.d/personalizeddesign.9prints.com.conf
+    owner: root
+    group: root
+    mode: '0644'
+    backup: yes
+
+- name: copy template config for vhost dell-utils.9prints.com
+  template:
+    src: dell-utils.9prints.com.conf.j2
+    dest: /etc/nginx/conf.d/dell-utils.9prints.com.conf
+    owner: root
+    group: root
+    mode: '0644'
+    backup: yes
+
+

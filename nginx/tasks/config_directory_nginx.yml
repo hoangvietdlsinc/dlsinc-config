@@ -1,0 +1,55 @@
+---
+- name: create web directory data
+  file:
+      path: "/data"
+      owner: root
+      group: root
+      state: directory
+      force: yes
+  ignore_errors: yes
+
+- name: create web directory for domains
+  file:
+      path: "/data/{{ item }}"
+      owner: nginx 
+      group: nginx 
+      mode: "0755"
+      state: directory
+      force: yes
+   with_items:
+   - {{ domain_name }}
+
+- name: create public_html directory for domains
+  file:
+      path: "/data/{{ item }}/public_html"
+      owner: nginx 
+      group: nginx 
+      mode: "0755"
+      state: directory
+      force: yes
+   with_items:
+   - {{ domain_name }}
+
+- name: create ssl directory for domains
+  file:
+      path: "/data/{{ item }}/ssl"
+      owner: nginx 
+      group: nginx 
+      mode: "0755"
+      state: directory
+      force: yes
+  with_items:
+   - {{ domain_name }}
+
+- name: create logs directory for domains
+  file:
+      path: "/data/{{ item }}/logs"
+      owner: nginx 
+      group: nginx 
+      mode: "0755"
+      state: directory
+      force: yes
+  with_items:
+   - {{ domain_name }}
+
+
