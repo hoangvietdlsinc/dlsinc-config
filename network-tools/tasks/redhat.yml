@@ -15,4 +15,9 @@
   when: ansible_distribution != "Fedora"
 
   notify:
-    name:  start iperf
+    name: copy iperf startup script
+    copy:
+      src: "./handlers/start_iperf.sh"
+      dest: /var/tmp/start_iperf.sh
+      mode: a+x
+    name: start iperf
