@@ -1,4 +1,4 @@
 ---
 # handlers file for ansible-network-tools
 - name: start iperf
-  shell: ./start_iperf.sh
+  shell: /var/tmp/start_iperf.sh
