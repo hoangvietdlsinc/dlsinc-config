@@ -42,7 +42,7 @@
         zone: iperf
         port: 5201/tcp
         permanent: yes
-        enabled: yes
+
 #- name: limit ip access port
 #    firewalld:
 #    source: 192.0.2.0/24
