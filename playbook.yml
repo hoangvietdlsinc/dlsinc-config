@@ -4,8 +4,8 @@
   become_method: sudo
   become_user: root
   roles:
-    #- nginx
-    #  - php
-       - mariadb
-    #  - network-tools
+      - nginx
+      - php
+      - mariadb
+      - network-tools
   ignore_errors: yes
