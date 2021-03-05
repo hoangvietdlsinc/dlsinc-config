@@ -8,7 +8,10 @@
   yum:  
      name: boost-program-options
      state: latest
-
+- name:
+  yum:
+       name: holland-mysqldump
+       state: present
 
 - name: Install MariaDB
   yum:
