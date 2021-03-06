@@ -17,6 +17,7 @@ php_modules:
         - php-xmlrpc
         - php-intl
         - php-apcu
+        - php-redis
         
 web_user: nginx 
 remi_release: https://rpms.remirepo.net/enterprise/remi-release-8.rpm
