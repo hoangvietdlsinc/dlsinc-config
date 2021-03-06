@@ -18,6 +18,11 @@ php_modules:
         - php-intl
         - php-apcu
         - php-redis
+        - php-pecl-zip
+        - php-devel
+        - php-soap
+        - php-solr
+        - php-bcmath
         
 web_user: nginx 
 remi_release: https://rpms.remirepo.net/enterprise/remi-release-8.rpm
