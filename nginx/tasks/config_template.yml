@@ -11,7 +11,7 @@
 - name: create vhost file
   template:
     src: domain.com.conf.j2
-    dest: /data/{{ item }}/vhost/{{ item }}.com.conf
+    dest: /data/{{ item }}/vhost/{{ item }}.conf
     owner: root
     group: root
     mode: '0644'
