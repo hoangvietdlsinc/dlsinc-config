@@ -7,22 +7,22 @@ mysql_databases:
                   name: personalizeddesign
                   user: 9prints_admin
                   password: test123
-                  userhost: ["localhost","%"]
+                  userhost: localhost
         fullfill:
                   name: fullfill
                   user: admin_dls_service 
                   password: test123
-                  userhost: ["localhost","%"]
+                  userhost: localhost
         dell_utils:
                   name: dell_utils
                   user: dell_utils
                   password: test123
-                  userhost: ["localhost","%"]
+                  userhost: localhost
         dls_website:
                   name: dls_website
                   user: dls_website
                   password: test123
-                  userhost: ["localhost","%"]
+                  userhost: localhost
                          
 mysql_port: 3306
 collation: utf8_general_ci
