@@ -10,7 +10,7 @@
         enabled: yes
 - name: Open Port 
   firewalld:
-        zone: database
+        zone: public
         service: mysql
         permanent: yes 
         state: enabled

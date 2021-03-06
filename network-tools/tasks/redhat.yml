@@ -39,7 +39,7 @@
         enabled: yes 
 - name: open port iperf
   firewalld:
-        zone: iperf
+        zone: public
         port: 5201/tcp
         permanent: yes
 

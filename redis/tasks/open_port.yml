@@ -9,7 +9,7 @@
         enabled: yes 
 - name: open port redis
   firewalld:
-        zone: cache
+        zone: public
         port: 6379/tcp
         permanent: yes
         state: enabled
