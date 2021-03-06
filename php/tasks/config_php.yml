@@ -1,15 +1,10 @@
 ---
-- name: Replace User in www.conf is nginx
-  replace:
-        path: /etc/php-fpm.d/www.conf
-        regexp: 'user = apache'
-        replace: "user = {{ item }}"
-  with_items:
-  - "{{ web_user }}"
-- name: Replace Group in www.conf is nginx
-  replace:
-        path: /etc/php-fpm.d/www.conf
-        regexp: 'group = apache'
-        replace: "group = {{ item }}"
-  with_items:
-  - "{{ web_user }}"
+- name: copy www.conf
+  copy:
+      src: "./files/www.conf"
+      dest: /etc/php-fpm.d/www.conf
+      owner: root
+      group: root
+      mode: "0755"
+      backup: yes
+      force: yes
