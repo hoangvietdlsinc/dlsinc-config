@@ -2,7 +2,7 @@ server {
     server_name 9prints.com;
     root   /data/{{ item }}/public_html;
     index  index.html index.htm index.php;
-    access_log  /data/{{ item }}/logs/access.log  main
+    access_log  /data/{{ item }}/logs/access.log  main;
     error_log /data/{{ item }}/logs/error.log warn;
 
     client_max_body_size 275M;
