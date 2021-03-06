@@ -8,7 +8,7 @@
   yum:  
      name: boost-program-options
      state: latest
-- name:
+- name: install mysqldump
   yum:
        name: holland-mysqldump
        state: present
