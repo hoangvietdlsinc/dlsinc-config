@@ -1,14 +1,10 @@
 # BASTION HOST JUMP TEMPLATE
 
-Host 54.169.167.151
+Host 3.132.212.137
     User ec2-user
     IdentityFile ~/.ssh/bastion01_id_rsa
 # This covers all hosts within my 10.70.0.0/16 private network
-Host 10.10.10.*
-    User ec2-user
-    IdentityFile ~/.ssh/frontend01_id_rsa
-    ProxyCommand ssh ec2-user@54.169.167.151 -W %h:%p
-Host 10.10.20.*
-    User ec2-user
-    IdentityFile ~/.ssh/backend01_id_rsa
-    ProxyCommand ssh ec2-user@54.169.167.151 -W %h:%p
+Host 172.31.0.233
+    User centos
+    IdentityFile ~/.ssh/dlscentos_id_rsa
+    ProxyCommand ssh ec2-user@3.132.212.137 -W %h:%p
