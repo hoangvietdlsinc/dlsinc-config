@@ -6,22 +6,22 @@ mysql_databases:
         personalizeddesign:
                   name: personalizeddesign
                   user: 9prints_admin
-                  password: test123
+                  password: drUdutoBeCEpRAbRAmeW
                   userhost: localhost
         fullfill:
                   name: fullfill
                   user: admin_dls_service 
-                  password: test123
+                  password: wlwrlbrAtrlphesustid
                   userhost: localhost
         dell_utils:
                   name: dell_utils
                   user: dell_utils
-                  password: test123
+                  password: nEdrebewruduhAYeZOdE
                   userhost: localhost
         dls_website:
                   name: dls_website
                   user: dls_website
-                  password: test123
+                  password: faToBrUphutLstuBuPrI
                   userhost: localhost
                          
 mysql_port: 3306

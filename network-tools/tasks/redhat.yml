@@ -42,6 +42,7 @@
         zone: public
         port: 5201/tcp
         permanent: yes
+        state: enabled
 
 #- name: limit ip access port
 #    firewalld:
