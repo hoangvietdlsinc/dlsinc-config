@@ -3,3 +3,4 @@
 - import_tasks: install_php.yml
 - import_tasks: config_php.yml
 - import_tasks: install_imagick.yml
+- import_tasks: php_composer.yml

@@ -6,6 +6,6 @@
   roles:
           - nginx
           - php
-          #- mariadb
-          #- network-tools
+          - mariadb
+          - network-tools
   ignore_errors: yes
