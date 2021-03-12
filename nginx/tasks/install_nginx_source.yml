@@ -64,7 +64,7 @@
 - name: create nginx service file
   copy:
         src: "./files/nginx.service"
-        dest: etc/systemd/system/
+        dest: /etc/systemd/system/
         owner: root
         group: root
         mode: '0644'
