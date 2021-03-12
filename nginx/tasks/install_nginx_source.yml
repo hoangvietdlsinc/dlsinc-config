@@ -7,7 +7,8 @@
   yum:
       name: "@Development tools"
       state: present
-
+- name: add nginx user and group
+  command: adduser nginx --system --no-create-home --shell /sbin/nologin --user-group
 - name: install requirements packages
   yum:
        name: "{{ nginx_dependencies }}"
