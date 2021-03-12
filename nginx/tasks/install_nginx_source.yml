@@ -1,0 +1,86 @@
+- name: install epel-release
+  yum:
+       name: epel-release,wget,tar
+       state: present
+
+- name: install developer group software
+  yum:
+      name: "@Development tools"
+      state: present
+
+- name: install requirements packages
+  yum:
+       name: "{{ nginx_dependencies }}"
+       state: present
+
+- name: download dependencies
+  get_url:
+    url: "{{ item }}"
+    dest: /tmp/
+    mode: '0700'
+  with_items:
+  - "{{ link_dependencies }}"
+  register: dependencies_download
+
+- name: Unpacking denpendencies
+  unarchive:
+      copy: no
+      src: "/tmp/{{ item }}.tar.gz"
+      dest: /tmp/
+  when: dependencies_download.changed
+  with_items:
+  - "{{ dependencies_version }}"
+
+- name: download nginx
+  get_url:
+    url: "{{ nginx_source_url }}"
+    dest: /tmp/{{ nginx_version}}.tar.gz
+    mode: '0700'
+  register: nginx_source 
+
+- name: Unpacking Nginx
+  unarchive:
+      copy: no
+      src: "/tmp/{{ nginx_version }}.tar.gz"
+      dest: /tmp/
+  when: nginx_source.changed
+  register: nginx_source_unpack
+
+- name: configuring NGINX from source
+  command: "./configure --prefix=/etc/nginx --sbin-path=/usr/sbin/nginx --pid-path=/var/run/nginx.pid --lock-path=/var/run/nginx.lock --conf-path=/etc/nginx/nginx.conf --modules-path=/etc/nginx/modules --error-log-path=/var/log/nginx/error.log --http-log-path=/var/log/nginx/access.log --user=nginx --group=nginx --with-pcre=../pcre-8.44 --with-pcre-jit --with-zlib=../zlib-1.2.11 --with-openssl=../openssl-1.1.1g --with-http_ssl_module --with-http_v2_module --with-threads --with-file-aio --with-http_degradation_module --with-http_auth_request_module --with-http_geoip_module --with-http_realip_module --with-http_secure_link_module --with-cpp_test_module --with-debug --with-google_perftools_module --with-mail --with-mail_ssl_module --with-http_mp4_module --with-http_flv_module --with-stream --with-stream_ssl_module --with-stream_ssl_preread_module --with-http_dav_module --with-http_image_filter_module --with-http_gunzip_module --with-http_gzip_static_module --with-http_addition_module --with-http_random_index_module --with-http_slice_module --with-http_sub_module --with-http_xslt_module --with-select_module --with-poll_module --with-http_perl_module=dynamic "
+  args:
+     chdir: "{{ nginx_install_dir }}"
+  when: nginx_source_unpack.changed
+  register: nginx_configure
+
+- name: install NGINX
+  shell: "make && make install" 
+  args:
+     chdir: "{{ nginx_install_dir }}"
+  when: nginx_configure.changed 
+  register: nginx_install  
+
+- name: create nginx service file
+  copy:
+        src: "./files/nginx.service"
+        dest: etc/systemd/system/
+        owner: root
+        group: root
+        mode: '0644'
+  when: nginx_install.changed
+  notify:
+  - start nginx
+  - enable nginx
+  
+
+
+  
+
+
+
+
+
+
+
+
+  

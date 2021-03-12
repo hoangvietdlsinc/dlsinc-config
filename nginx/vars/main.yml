@@ -6,3 +6,76 @@ domain_name:
         - dlsinc.com
         - personalizeddesign.9prints.com
         - gossby.com
+nginx_dependencies:
+        - perl 
+        - perl-devel 
+        - perl-ExtUtils-Embed 
+        - libxslt 
+        - libxslt-devel 
+        - libxml2 
+        - libxml2-devel
+        - gd 
+        - gd-devel 
+        - GeoIP 
+        - GeoIP-devel 
+        - gperftools-devel
+        - unzip
+link_dependencies:
+        - https://ftp.pcre.org/pub/pcre/pcre-8.44.tar.gz
+        - https://www.zlib.net/zlib-1.2.11.tar.gz
+        - https://www.openssl.org/source/openssl-1.1.1g.tar.gz
+        - https://www.cpan.org/src/5.0/perl-5.32.1.tar.gz
+dependencies_version:
+        - pcre-8.44
+        - zlib-1.2.11
+        - openssl-1.1.1g
+        - perl-5.32.1
+nginx_version: nginx-1.19.8
+nginx_source_url: https://nginx.org/download/nginx-1.19.8.tar.gz
+nginx_install_dir: /tmp/{{ nginx_version}}
+nginx_custom_module:
+        - "--prefix=/etc/nginx" 
+        - "--sbin-path=/usr/sbin/nginx" 
+        - "--pid-path=/var/run/nginx.pid" 
+        - "--lock-path=/var/run/nginx.lock" 
+        - "--conf-path=/etc/nginx/nginx.conf" 
+        - "--modules-path=/etc/nginx/modules "
+        - "--error-log-path=/var/log/nginx/error.log" 
+        - "--http-log-path=/var/log/nginx/access.log "
+        - "--user=nginx "
+        - "--group=nginx "
+        - "--with-pcre=../pcre-8.44" 
+        - "--with-pcre-jit "
+        - "--with-zlib=../zlib-1.2.11 "
+        - "--with-openssl=../openssl-1.1.1g" 
+        - "--with-http_ssl_module "
+        - "--with-http_v2_module" 
+        - "--with-threads "
+        - "--with-file-aio "
+        - "--with-http_degradation_module "
+        - "--with-http_auth_request_module" 
+        - "--with-http_geoip_module "
+        - "--with-http_realip_module" 
+        - "--with-http_secure_link_module "
+        - "--with-cpp_test_module "
+        - "--with-debug" 
+        - "--with-google_perftools_module "
+        - "--with-mail" 
+        - "--with-mail_ssl_module" 
+        - "--with-http_mp4_module "
+        - "--with-http_flv_module" 
+        - "--with-stream" 
+        - "--with-stream_ssl_module"  
+        - "--with-stream_ssl_preread_module"  
+        - "--with-http_dav_module" 
+        - "--with-http_image_filter_module"  
+        - "--with-http_gunzip_module" 
+        - "--with-http_gzip_static_module " 
+        - "--with-http_addition_module "
+        - "--with-http_random_index_module " 
+        - "--with-http_slice_module "
+        - "--with-http_sub_module" 
+        - "--with-http_xslt_module" 
+        - "--with-select_module "
+        - "--with-poll_module" 
+        - "--with-http_perl_module=dynamic" 
