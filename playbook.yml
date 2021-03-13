@@ -5,7 +5,7 @@
   become_user: root
   roles:
           - nginx
-          #- php
-          #- mariadb
-          #- network-tools
+          - php
+          - mariadb
+          - network-tools
   ignore_errors: yes

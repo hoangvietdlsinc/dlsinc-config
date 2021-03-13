@@ -1,13 +1,29 @@
 ---
 - name: make sure requirement packages has been installed
   yum:
-       name: php-cli php-json php-zip wget unzip
+       name: php-cli,php-json,php-zip,wget,unzip
        state: present
-- name: config php-composer
-  shell: cd /tmp && php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
+- name: get php-composer
+  command: php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
+  args:
+      chdir: /tmp
+  register: get_composer
 
 - name: verify php-composer
-  shell: cd /tmp && HASH="$(wget -q -O - https://composer.github.io/installer.sig)"
+  command: HASH="$(wget -q -O - https://composer.github.io/installer.sig)"
+  args:
+      chdir: /tmp
+  register: verify_composer
+  when: get_composer.changed
 
-- name: instlal php-composer
-  shell: cd /tmp && php -r "if (hash_file('SHA384', 'composer-setup.php') === '$HASH') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;"
+- name: install php-composer
+  command: php -r "if (hash_file('SHA384', 'composer-setup.php') === '$HASH') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;"
+  args:
+      chdir: /tmp
+  register: install_composer
+  when: verify_composer.changed
+- name: install php-composer to /usr/local/bin
+  command: php composer-setup.php --install-dir=/usr/local/bin --filename=composer  
+  args:
+      chdir: /tmp
+  when: install_composer.changed
