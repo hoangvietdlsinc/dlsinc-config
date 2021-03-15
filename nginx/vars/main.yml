@@ -1,11 +1,7 @@
 ---
 # vars file for nginx
 domain_name:
-        - 9prints.com
-        - dell-utils.9prints.com
-        - dlsinc.com
-        - personalizeddesign.9prints.com
-        - gossby.com
+        - hoangvietitvn.tk
 nginx_dependencies:
         - perl 
         - perl-devel 

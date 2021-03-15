@@ -1,0 +1,28 @@
+---
+- name: install requirement packages
+  yum:
+      name: socat,wget,git
+      state: present
+  
+  
+- name: git repo acme.sh
+  git:
+      repo: 'https://github.com/acmesh-official/acme.sh.git'
+      dest: /tmp/
+  register: git_repo
+
+- name: install acme.sh
+  command: ./acme.sh --install -m vietnh@dlsinc.com
+  args:
+      chdir: /tmp/acme.sh
+  when: git_repo.changed
+  register: install_acme
+
+- name: get ssl
+  command: ./acme.sh --issue -d {{ item }} -w /data/*/public_html --cert-home /data/*/ssl
+  args:
+      chdir: /tmp/acme.sh
+  when: install_acme.changed
+  with_items:
+  - "{{ domain_name }}"
+  
