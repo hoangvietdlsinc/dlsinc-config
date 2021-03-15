@@ -2,7 +2,7 @@
 # tasks file for nginx
 - import_tasks: selinux.yml
 - import_tasks: install_nginx_source.yml
-#- import_tasks: install_nginx.yml
+#- import_tasks: install_nginx_repo.yml
 - import_tasks: config_directory.yml
 - import_tasks: config_template.yml
 - import_tasks: install_acme.yml
