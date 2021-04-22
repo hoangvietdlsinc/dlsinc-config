@@ -5,6 +5,6 @@
         regexp: "SELINUX=enforcing"
         replace: "SELINUX=permissive"
 
-#- name: Reboot
-#  reboot:
-#      reboot_timeout: 300
+- name: Reboot
+  reboot:
+      reboot_timeout: 300
