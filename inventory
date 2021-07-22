@@ -1,6 +1,6 @@
 [webserver]
-10.199.100.12
+10.100.100.10
 [webserver:vars]
-ansible_user=ansible
-ansible_ssh_private_key_file=/home/vietnh/.ssh/id_rsa
+ansible_user=vagrant
+ansible_ssh_private_key_file=/home/vagrant/private_key
 

@@ -9,14 +9,13 @@
       name: ImageMagick,ImageMagick-devel
       state: present
 
-#- name: pecl install imagick
-#  command: pecl install imagick
+- name: install pecl-imagick
+  yum:
+      name: php-pecl-imagick
+      state: present
 
-#- name: config imagick
-#  command: echo "extension=imagick.so" > /etc/php.d/20-imagick.ini
-#  notify:
-#  - restart nginx
-#  - restart php-fpm
+- name: config imagick in php.ini
+  shell: echo "extension=imagick.so" > /etc/php.d/40-imagick.ini
 
 
 
