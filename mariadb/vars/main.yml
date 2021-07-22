@@ -23,29 +23,8 @@ mysql_databases:
                   user: dls_website
                   password: faToBrUphutLstuBuPrI
                   userhost: localhost
-                         
-mysql_port: 3306
-collation: utf8_general_ci
-encode: utf8                
-mysql_host: localhost
-mysql_root_user: root
+                                           
 mysql_root_password: qRRMavnNUB9Eqxujbb9C
 
-local: localhost
-remote: '%'
 
-# personalizedDesign service account
-personalizeddesign_user: 9prints_admin
-personalizeddesign_password: test123
 
-# fulfill service account 
-fulfill_user: admin_dls_service
-fulfill_password: test123
-
-# dell utils service account
-dell_utils_user: dls_utils
-dell_utils_password: test123
-
-# dls website account
-dls_website_user: dls_website
-dls_website_password: test123
