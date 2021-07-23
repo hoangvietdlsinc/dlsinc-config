@@ -1,0 +1,7 @@
+---
+# handlers file for mongodb
+- name: start and enable mongodb
+  service:
+      name: mongod
+      state: started
+      enabled: yes

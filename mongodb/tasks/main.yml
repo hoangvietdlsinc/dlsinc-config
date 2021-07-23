@@ -1,0 +1,3 @@
+---
+# tasks file for mongodb
+- import_tasks: install_mongodb.yml

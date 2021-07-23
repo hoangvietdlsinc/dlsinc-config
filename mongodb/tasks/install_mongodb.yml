@@ -1,0 +1,25 @@
+---
+- name: copy mongo repo to yum.repos.d
+  copy:
+    src: "./files/mongodb-org-4.2.repo"
+    dest: "/etc/yum.repos.d/"
+    owner: root
+    group: root
+    mode: "0644"
+
+- name: install mongodb
+  yum:
+      name: mongodb-org
+      state: present
+
+- name: reload service
+  shell: systemctl daemon-reload
+  notify:
+    - start and enable mongodb
+
+
+  
+
+
+
+

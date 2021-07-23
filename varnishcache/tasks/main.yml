@@ -1,0 +1,3 @@
+---
+# tasks file for varnishcache
+- import_task: install_varnishcache.yml
