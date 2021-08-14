@@ -1,17 +1,17 @@
 ---
-#- hosts: webserver
-#  become: yes
-#  become_method: sudo
-#  become_user: root
-#  roles:
-#           - nginx
-#           - php
-          # - mariadb
-          #- network-tools
-  #ignore_errors: no
-- hosts: database
+- hosts: webserver
   become: yes
   become_method: sudo
   become_user: root
   roles:
-          - mariadb
+           - nginx
+          # - php
+          # - mariadb
+          # - network-tools
+  #ignore_errors: no
+  #- hosts: database
+  #become: yes
+  #become_method: sudo
+  #become_user: root
+  #roles:
+  #        - mariadb
