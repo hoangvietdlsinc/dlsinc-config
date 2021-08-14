@@ -2,7 +2,7 @@
 # vars file for nginx
 domain_name:
         - example.com
-nginx_dependencies:
+nginx_packages_dependencies:
         - perl 
         - perl-devel 
         - perl-ExtUtils-Embed 
@@ -16,7 +16,7 @@ nginx_dependencies:
         - GeoIP-devel 
         - gperftools-devel
         - unzip
-nginx_manual_dependencies:
+nginx_other_packages_dependencies:
         - https://ftp.pcre.org/pub/pcre/pcre-8.45.tar.gz
         - https://www.zlib.net/zlib-1.2.11.tar.gz
         - https://www.openssl.org/source/openssl-1.1.1k.tar.gz
@@ -26,6 +26,14 @@ dependencies_version:
         - zlib-1.2.11
         - openssl-1.1.1k
         - perl-5.32.1
+nginx_temp_dir: /var/lib/nginx/tmp
+nginx_body_temp_dir:
+        - /var/lib/nginx/tmp/client_body
+        - /var/lib/nginx/tmp/proxy
+        - /var/lib/nginx/tmp/fastcgi
+        - /var/lib/nginx/tmp/uwsgi
+        - /var/lib/nginx/tmp/scgi
+
 nginx_version: nginx-1.20.1
 nginx_source_url: https://nginx.org/download/nginx-1.20.1.tar.gz
 nginx_install_dir: /tmp/{{ nginx_version}}
