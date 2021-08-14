@@ -3,9 +3,5 @@
 [webserver:vars]
 ansible_user=vagrant
 ansible_ssh_private_key_file=/home/vagrant/webserver01_key
-[database]
-10.100.100.30
-[database:vars]
-ansible_user=vagrant
-ansible_ssh_private_key_file=/home/vagrant/database01_key
+
 

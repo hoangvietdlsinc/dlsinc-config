@@ -25,6 +25,6 @@ mysql_databases:
                   userhost: localhost
                                            
 mysql_root_password: cocailonditconbamay
-
+mysql_port: 3306
 
 

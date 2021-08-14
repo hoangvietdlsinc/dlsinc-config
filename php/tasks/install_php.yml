@@ -24,6 +24,7 @@
   yum: 
       name: "{{ php_modules }}"
       state: present
+      
 - name: install php mongo driver
   command: pecl install mongodb
 

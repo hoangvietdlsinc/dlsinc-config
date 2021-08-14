@@ -23,6 +23,7 @@ php_modules:
         - php-soap
         - php-solr
         - php-bcmath
+        - php-raphf
         - inkscape
           
         
