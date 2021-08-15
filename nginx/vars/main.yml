@@ -22,11 +22,11 @@ nginx_other_packages_link:
         - https://www.openssl.org/source/openssl-1.1.1k.tar.gz
         - https://www.cpan.org/src/5.0/perl-5.32.1.tar.gz
 nginx_other_packages:
-        - pcre-8.45.tar.gz
-        - zlib-1.2.11.tar.gz
-        - openssl-1.1.1k.tar.gz
-        - perl-5.32.1.tar.gz
-        - nginx-1.20.1.tar.gz
+        - pcre-8.45
+        - zlib-1.2.11
+        - openssl-1.1.1k
+        - perl-5.32.1
+        - nginx-1.21.1
 nginx_temp_dir: /var/lib/nginx/tmp
 nginx_body_temp_dir:
         - /var/lib/nginx/tmp/client_body
@@ -35,6 +35,6 @@ nginx_body_temp_dir:
         - /var/lib/nginx/tmp/uwsgi
         - /var/lib/nginx/tmp/scgi
 
-nginx_version: nginx-1.20.1
-nginx_source_url: https://nginx.org/download/nginx-1.20.1.tar.gz
+nginx_version: nginx-1.21.1
+nginx_source_url: https://nginx.org/download/nginx-1.21.1.tar.gz
 nginx_install_dir: /tmp/{{ nginx_version}}
