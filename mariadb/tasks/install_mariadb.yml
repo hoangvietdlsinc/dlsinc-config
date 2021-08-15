@@ -8,7 +8,7 @@
   yum:
       name: epel-release
       state: present
-- name: Install boost-program-options
+- name: install boost-program-options
   yum:  
      name: boost-program-options
      state: latest
@@ -17,7 +17,7 @@
        name: holland-mysqldump
        state: present
 
-- name: Install MariaDB
+- name: install MariaDB
   yum:
      name: MariaDB-server,MariaDB-client
      update_cache: yes
@@ -26,8 +26,4 @@
   notify:
   - start mariadb
   - enable mariadb
-- name: start mariadb
-  service:
-      name: mariadb
-      state: started
    

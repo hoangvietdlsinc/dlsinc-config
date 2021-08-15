@@ -3,7 +3,7 @@
   mysql_db:
       name: "{{ item.value.name}}"
       state: present
-      login_host: localhost
+      login_host: "{{ mysql_login_host }}"
       login_port: "{{ mysql_port }}"
       login_user: "{{ mysql_root_user }}"
       login_password: "{{ mysql_root_password }}"
@@ -16,7 +16,7 @@
     password: "{{ item.value.password }}"
     priv: '{{ item.value.name }}.*:ALL'
     state: present
-    login_host: localhost
+    login_host: "{{ mysql_login_host }}"
     login_port: "{{ mysql_port }}"
     login_user: "{{ mysql_root_user }}"
     login_password: "{{ mysql_root_password }}"

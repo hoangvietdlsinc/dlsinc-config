@@ -24,7 +24,8 @@ mysql_databases:
                   password: test4_password
                   userhost: localhost
                                            
-mysql_root_password: cocailonditconbamay
+mysql_root_password: "12345678910"
 mysql_port: 3306
+mysql_login_host: localhost
 
 
