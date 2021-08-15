@@ -21,7 +21,7 @@
 #    dest: /tmp/
 #    mode: '0700'
 #  with_items:
-#  - "{{ nginx_other_packages_dependencies }}"
+#  - "{{ nginx_other_packages_link }}"
 #  register: dependencies_download
 
 
