@@ -4,9 +4,9 @@
   become_method: sudo
   become_user: root
   roles:
-           - nginx
+           #- nginx
              #- php
-             #- mariadb
+           - mariadb
              #- network-tools
              #- redis
   #ignore_errors: no

@@ -1,21 +1,22 @@
+- name: install requirement packages
+  yum:
+      name: epel-release
+      state: present
+- name: install mysqldump
+  yum:
+       name: holland-mysqldump
+       state: present
+- name: install boost-program-options
+  yum:  
+     name: boost-program-options
+     state: latest
 - name: Copy Repo File To Remote Server
   copy:
      src: ./files/MariaDB.repo
      dest: /etc/yum.repos.d/
      owner: root
      group: root
-- name: install requirement packages
-  yum:
-      name: epel-release
-      state: present
-- name: install boost-program-options
-  yum:  
-     name: boost-program-options
-     state: latest
-- name: install mysqldump
-  yum:
-       name: holland-mysqldump
-       state: present
+     mode: "0644"
 
 - name: install MariaDB
   yum:
