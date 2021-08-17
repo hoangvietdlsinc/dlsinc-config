@@ -6,6 +6,13 @@
   notify:
     - start mysql
     - enable mysql
+  register: install_mysql
+- name: start mysql
+  service:
+      name: mysqld
+      state: started
+  when: install_mysql.changed
+
 
 
 

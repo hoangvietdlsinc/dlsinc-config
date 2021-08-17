@@ -7,6 +7,8 @@
 
 - name: install pip3-pymysql for ansible 
   command: pip3 install pymysql
+  when: install_pythonpip.changed
+  register: install_pymysql
 - name: create database
   mysql_db:
       name: "{{ item.value.name}}"
@@ -16,6 +18,7 @@
       login_user: "{{ mysql_root_username }}"
       login_password: "{{ mysql_root_password }}"
   with_dict: "{{ mysql_databases }}"
+  when: install_pymysql.changed
   
 - name: create database user  
   mysql_user:
@@ -29,3 +32,4 @@
     login_user: "{{ mysql_root_username }}"
     login_password: "{{ mysql_root_password }}"
   with_dict: "{{ mysql_databases }}"
+  when: install_pymysql.changed
