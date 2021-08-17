@@ -1,2 +1,3 @@
 ---
-- import_tasks: RHEL8/install_mysql.yml
+- import_tasks: RHEL/redhat.yml
+  when: ansible_os_family == 'RedHat' 

@@ -1,2 +1,18 @@
 ---
 # vars file for mysql
+mysql_databases:
+        exampledb01:
+                  name: test1
+                  user: test1_user
+                  password: test1-password
+                  userhost: localhost
+        exampledb02:
+                  name: test2
+                  user: test2_user
+                  password: test2-password
+                  userhost: localhost
+mysql_root_username: root
+mysql_root_password: test-root-password
+mysql_port: 3306
+mysql_login_host: localhost
+

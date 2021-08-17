@@ -1,0 +1,4 @@
+---
+- import_tasks: install_mysql_rhel.yml
+- import_tasks: secure_mysql_rhel.yml
+- import_tasks: create_database_rhel.yml

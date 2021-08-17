@@ -1,0 +1,31 @@
+---
+- name: install python3-pip
+  yum:
+      name: python3-pip
+      state: present
+  register: install_pythonpip
+
+- name: install pip3-pymysql for ansible 
+  command: pip3 install pymysql
+- name: create database
+  mysql_db:
+      name: "{{ item.value.name}}"
+      state: present
+      login_host: "{{ mysql_login_host }}"
+      login_port: "{{ mysql_port }}"
+      login_user: "{{ mysql_root_username }}"
+      login_password: "{{ mysql_root_password }}"
+  with_dict: "{{ mysql_databases }}"
+  
+- name: create database user  
+  mysql_user:
+    name: "{{ item.value.user }}"
+    host: "{{ item.value.userhost }}"
+    password: "{{ item.value.password }}"
+    priv: '{{ item.value.name }}.*:ALL'
+    state: present
+    login_host: "{{ mysql_login_host }}"
+    login_port: "{{ mysql_port }}"
+    login_user: "{{ mysql_root_username }}"
+    login_password: "{{ mysql_root_password }}"
+  with_dict: "{{ mysql_databases }}"
