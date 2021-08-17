@@ -1,0 +1,10 @@
+---
+- name: install mysql server 8
+  yum:
+      name: "@mysql"
+      state: present
+  notify:
+    - start mysql
+    - enable mysql
+
+

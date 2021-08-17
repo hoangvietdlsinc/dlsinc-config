@@ -1,11 +1,14 @@
 ---
 # handlers file for varnishcache
-- name: start and enable varnish
+- name: start mysql
   service:
-      name: varnish
+      name: mysql
       state: started
-      enabled: yes
-- name: restart varnish
+- name: restart mysql
   service:
-      name: varnish
+      name: mysql
       state: restarted
+- name: enable mysql
+  service:
+      name: mysql
+      enabled: yes

@@ -6,7 +6,7 @@
   roles:
            #- nginx
              #- php
-           - mariadb
+           - mysql
              #- network-tools
              #- redis
   #ignore_errors: no

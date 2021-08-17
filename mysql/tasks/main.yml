@@ -1,2 +1,2 @@
 ---
-# tasks file for varnishcache
+- import_tasks: RHEL8/install_mysql.yml
