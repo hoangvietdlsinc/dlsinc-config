@@ -1,0 +1,4 @@
+---
+- import_tasks: install_mongodb.yml
+- import_tasks: selinux_config.yml
+  when: ansible_facts.selinux.status == 'enabled'

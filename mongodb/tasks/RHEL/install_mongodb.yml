@@ -1,7 +1,7 @@
 ---
 - name: copy mongo repo to yum.repos.d
   copy:
-    src: "./files/mongodb-org-4.2.repo"
+    src: "./files/mongodb-org-5.0.repo"
     dest: "/etc/yum.repos.d/"
     owner: root
     group: root

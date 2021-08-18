@@ -1,0 +1,24 @@
+---
+- name: copy selinux config file to /tmp
+  copy:
+    src: "./files/{{ item }}.te"
+    dest: "/tmp/"
+    owner: root
+    group: root
+    mode: "0644"
+    force: yes
+  with_items:
+  - "{{ selinux_config_file }}"
+  register: copy_selinux_config
+
+- name: config selinux mongodb_cgroup_memory
+  shell: "checkmodule -M -m -o mongodb_cgroup_memory.mod mongodb_cgroup_memory.te ; semodule_package -o mongodb_cgroup_memory.pp -m mongodb_cgroup_memory.mod ; semodule -i mongodb_cgroup_memory.pp"
+  args: 
+        chdir: "/tmp"
+  when: copy_selinux_config.changed
+
+- name: config selinux mongodb_proc_net
+  shell: "checkmodule -M -m -o mongodb_proc_net.mod mongodb_proc_net.te ; semodule_package -o mongodb_proc_net.pp -m mongodb_proc_net.mod ; semodule -i mongodb_proc_net.pp"
+  args:
+        chdir: "/tmp"
+  when: copy_selinux_config.changed

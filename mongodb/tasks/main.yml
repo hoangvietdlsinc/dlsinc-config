@@ -1,3 +1,6 @@
 ---
 # tasks file for mongodb
-- import_tasks: install_mongodb.yml
+- import_tasks: RHEL/redhat.yml
+  when: ansible_os_family == 'RedHat'
+#   - debug:
+#        var: ansible_facts.selinux.status 

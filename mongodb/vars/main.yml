@@ -1,2 +1,5 @@
 ---
 # vars file for mongodb
+selinux_config_file:
+        - mongodb_proc_net
+        - mongodb_cgroup_memory  
