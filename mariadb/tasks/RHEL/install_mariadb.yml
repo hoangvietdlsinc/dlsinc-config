@@ -16,3 +16,8 @@
   notify:
   - start mariadb
   - enable mariadb
+
+- name: start mariadb
+  service:
+      name: mariadb
+      state: started
