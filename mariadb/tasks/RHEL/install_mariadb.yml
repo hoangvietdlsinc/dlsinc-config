@@ -10,7 +10,7 @@
 
 - name: install mariadb
   yum:
-      name: MariaDB-server MariaDB-client
+      name: mariadb-server
       state: present
       update_cache: yes
   notify:

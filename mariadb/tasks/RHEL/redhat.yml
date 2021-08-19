@@ -1,2 +1,4 @@
 ---
 - import_tasks: install_mariadb.yml
+- import_tasks: secure_mariadb.yml
+- import_tasks: open_firewall.yml
