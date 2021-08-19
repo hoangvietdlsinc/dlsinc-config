@@ -24,6 +24,7 @@ php_modules:
         - php-solr
         - php-bcmath
         - php-raphf
+        - php-soap
         - inkscape
           
         

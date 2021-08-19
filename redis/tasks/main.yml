@@ -1,5 +1,4 @@
 ---
 # tasks file for redis
 - import_tasks: install_redis.yml
-- import_tasks: config_redis.yml
 - import_tasks: open_port.yml

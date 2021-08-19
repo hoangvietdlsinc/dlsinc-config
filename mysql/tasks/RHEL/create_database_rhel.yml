@@ -7,7 +7,7 @@
 
 - name: install pip3-pymysql for ansible 
   command: pip3 install pymysql
-  when: install_pythonpip.changed
+  #when: install_pythonpip.changed ||
   register: install_pymysql
 - name: create database
   mysql_db:

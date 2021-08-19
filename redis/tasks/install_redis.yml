@@ -4,3 +4,6 @@
       name: redis
       state: present
       update_cache: yes
+  notify:
+    - start redis
+    - enable redis
