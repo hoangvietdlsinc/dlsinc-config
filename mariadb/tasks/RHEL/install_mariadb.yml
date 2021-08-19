@@ -1,0 +1,18 @@
+---
+- name: copy repo file to server
+  copy:
+      src: "./files/mariadb.repo"
+      dest: "/etc/yum.repos.d/"
+      owner: root
+      group: root
+      mode: "0644"
+      force: yes
+
+- name: install mariadb
+  yum:
+      name: MariaDB-server MariaDB-client
+      state: present
+      update_cache: yes
+  notify:
+  - start mariadb
+  - enable mariadb

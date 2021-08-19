@@ -1,0 +1,30 @@
+---
+- name: make sure firewalld has install
+  yum:
+      name: firewalld
+      state: present
+  register: install_firewalld
+
+- name: make sure firewalld service has start
+  service:
+      name: firewalld
+      state: started
+  register: start_firewalld
+  
+- name: open port 3306 for mariadb
+  firewalld:
+      zone: public
+      service: mysql
+      permanent: yes 
+      state: enabled
+  when: 
+  - install_firewalld.changed
+  - start_firewalld.changed
+
+- name: restart firewalld
+  service:
+        name: firewalld
+        state: restarted
+        enabled: yes 
+  
+  

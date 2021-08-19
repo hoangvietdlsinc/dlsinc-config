@@ -1,2 +1,4 @@
 ---
 # tasks file for mariadb
+- import_tasks: RHEL/redhat.yml
+  when: ansible_os_family == 'RedHat'
